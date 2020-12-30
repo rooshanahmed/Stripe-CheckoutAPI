@@ -1,5 +1,5 @@
 import React from "react"
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
+import { CardCvcElement, CardElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import "./CheckoutForm.css"
 
 const CARD_ELEMENT_OPTIONS = {
@@ -33,17 +33,22 @@ export default function CheckoutForm() {
 
     const result = await stripe.confirmCardPayment(data.client_secret, {
       payment_method: {
-        card: elements.getElement(CardElement),
+        card: elements.getElement(CardNumberElement),
         billing_details: {
           name: "Rooshan Ahmed",
+          email: "rooshan@gmail.com",
         },
       },
     })
+    console.log('Result: ',result);
   }
 
   return (
-    <div>
-      <CardElement options={CARD_ELEMENT_OPTIONS} />
+    <div className="mainRoot">
+      {/* <CardElement options={CARD_ELEMENT_OPTIONS} /> */}
+      <CardNumberElement options={CARD_ELEMENT_OPTIONS} />
+      <CardExpiryElement options={CARD_ELEMENT_OPTIONS} />
+      <CardCvcElement options={CARD_ELEMENT_OPTIONS} />
       <div>
         <button onClick={submitCheckout}>Checkout</button>
       </div>
