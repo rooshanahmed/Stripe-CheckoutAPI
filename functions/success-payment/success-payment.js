@@ -1,4 +1,5 @@
 const handler = async (event) => {
+  console.log('Data: ',JSON.parse(event.body))
   try {
     return {
       statusCode: 200,
