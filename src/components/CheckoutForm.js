@@ -1,5 +1,5 @@
 import React from "react"
-import { CardCvcElement, CardElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js"
+import { CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import "./CheckoutForm.css"
 
 const CARD_ELEMENT_OPTIONS = {
